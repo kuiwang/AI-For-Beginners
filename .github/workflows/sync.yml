@@ -20,12 +20,12 @@ jobs:
         with:
           fetch-depth: 0  # 拉取所有历史，确保完整同步
           ref: main  # 主分支名称，根据实际情况调整
-	  # 第二步：添加原仓库作为上游仓库
+      # 第二步：添加原仓库作为上游仓库
       - name: Add upstream repository
         run: |
           git remote add upstream https://github.com/microsoft/AI-For-Beginners.git
           git fetch upstream
-    # 第三步：同步原仓库的最新代码到你的Fork
+      # 第三步：同步原仓库的最新代码到你的Fork
       - name: Sync with upstream
         run: |
           git checkout main
