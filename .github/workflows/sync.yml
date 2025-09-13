@@ -21,7 +21,7 @@ jobs:
           mkdir -p ~/.ssh
           # 配置SSH密钥
           echo "${{ secrets.GITEE_SSH_KEY }}" > ~/.ssh/id_ed25519
-		  echo "${{ secrets.GITCODE_SSH_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.GITCODE_SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           # 配置SSH已知主机
           ssh-keyscan github.com >> ~/.ssh/known_hosts
