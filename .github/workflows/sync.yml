@@ -14,6 +14,27 @@ jobs:
     timeout-minutes: 10  # 设置超时时间
 
     steps:
+      # 第一步：配置SSH密钥
+      - name: Setup SSH keys
+        run: |
+          # 创建.ssh目录
+          mkdir -p ~/.ssh
+          # 配置SSH密钥
+          echo "${{ secrets.GITEE_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          # 配置SSH已知主机
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-keyscan gitee.com >> ~/.ssh/known_hosts
+          ssh-keyscan gitcode.net >> ~/.ssh/known_hosts
+          
+          # 新增：测试SSH连接到GitHub
+          echo "测试连接到GitHub..."
+          ssh -T git@github.com || echo "GitHub SSH连接测试失败"
+          
+          # 新增：测试SSH连接到Gitee（可选）
+          echo "测试连接到Gitee..."
+          ssh -T git@gitee.com || echo "Gitee SSH连接测试失败"
+          
       # 第一步：检出代码
       - name: Checkout source code
         uses: actions/checkout@v4
