@@ -11,7 +11,7 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 10  # 设置超时时间
+    timeout-minutes: 60  # 设置超时时间
 
     steps:
       # 第一步：配置SSH密钥
