@@ -5,13 +5,13 @@ on:
   push:
     branches: [ main, master ]  # 根据实际主分支名称调整
   schedule:
-    - cron: '0 * * * *'  # 每天同步一次 , '0 0 * * *'  # 每天同步一次
+    - cron: '0 0 * * *'  # 每天同步一次 , '0 0 * * *'  # 每天同步一次
   workflow_dispatch:  # 允许手动触发
 
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 60  # 设置超时时间
+    #timeout-minutes: 60  # 设置超时时间
 
     steps:
       # 第一步：配置SSH密钥
