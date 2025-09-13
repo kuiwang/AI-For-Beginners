@@ -30,15 +30,28 @@ jobs:
           
           # 新增：测试SSH连接到GitHub
           echo "测试连接到GitHub..."
-          ssh -T git@github.com || echo "GitHub SSH连接测试失败"
+          echo "测试连接到GitHub..."
+          if ssh -T git@github.com; then
+            echo "GitHub SSH连接测试成功"
+          else
+            echo "GitHub SSH连接测试失败"
+          fi
           
           # 新增：测试SSH连接到Gitee（可选）
           echo "测试连接到Gitee..."
-          ssh -T git@gitee.com || echo "Gitee SSH连接测试失败"
+          if ssh -T git@gitee.com; then
+            echo "gitee SSH连接测试成功"
+          else
+            echo "gitee SSH连接测试失败"
+          fi
 
           # 新增：测试SSH连接到Gitcode（可选）
           echo "测试连接到Gitcode..."
-          ssh -T git@gitcode.com || echo "Gitcode SSH连接测试失败"
+          if ssh -T git@gitcode.com; then
+            echo "gitcode SSH连接测试成功"
+          else
+            echo "gitcode SSH连接测试失败"
+          fi
           
       # 第一步：检出代码
       - name: Checkout source code
